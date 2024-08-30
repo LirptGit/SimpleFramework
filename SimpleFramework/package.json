@@ -1,0 +1,13 @@
+{
+	"name" : "com.unity.simpleframework",
+	"description": "This is a Simple Framework.",
+	"version" : "0.0.1",
+	"displayName" : "SimpleFramework",
+	"samples": [
+		{
+			"displayName": "SimpleFrameworkDemo",
+			"description": "This is a Simple Demo",
+			"path": "Samples~/SimpleFrameworkDemo"
+		}
+	] 
+}
