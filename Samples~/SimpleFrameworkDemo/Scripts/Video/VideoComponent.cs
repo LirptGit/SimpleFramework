@@ -3,35 +3,32 @@
 //using System.Collections.Generic;
 //using RenderHeads.Media.AVProVideo;
 
-//namespace RPT 
+//public class VideoComponent : SimpleFrameworkComponent
 //{
-//    public class VideoComponent : SimpleFrameworkComponent
+//    [SerializeField] private string[] mediaNames;
+
+//    private Dictionary<string, MediaPlayer> mediaDict = new Dictionary<string, MediaPlayer>();
+//    protected override void Awake()
 //    {
-//        [SerializeField] private string[] mediaNames;
+//        base.Awake();
 
-//        private Dictionary<string, MediaPlayer> mediaDict = new Dictionary<string, MediaPlayer>();
-//        protected override void Awake()
+//        for (int i = 0; i < mediaNames.Length; i++)
 //        {
-//            base.Awake();
-
-//            for (int i = 0; i < mediaNames.Length; i++)
-//            {
-//                GameObject videoObj = new GameObject(mediaNames[i]);
-//                videoObj.transform.parent = transform;
-//                MediaPlayer media = videoObj.GetOrAddComponent<MediaPlayer>();
-//                media.AutoOpen = false;
-//                media.AutoStart = false;
-//                mediaDict.Add(mediaNames[i], media);
-//            }
+//            GameObject videoObj = new GameObject(mediaNames[i]);
+//            videoObj.transform.parent = transform;
+//            MediaPlayer media = videoObj.GetOrAddComponent<MediaPlayer>();
+//            media.AutoOpen = false;
+//            media.AutoStart = false;
+//            mediaDict.Add(mediaNames[i], media);
 //        }
+//    }
 
-//        public MediaPlayer GetMediaPlayer(string mediaName) 
+//    public MediaPlayer GetMediaPlayer(string mediaName)
+//    {
+//        if (mediaDict.TryGetValue(mediaName, out MediaPlayer mediaPlayer))
 //        {
-//            if (mediaDict.TryGetValue(mediaName, out MediaPlayer mediaPlayer))
-//            {
-//                return mediaPlayer;
-//            }
-//            return null;
+//            return mediaPlayer;
 //        }
+//        return null;
 //    }
 //}

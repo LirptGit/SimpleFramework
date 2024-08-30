@@ -1,17 +1,14 @@
 using UnityEngine;
 using SimpleFramework;
 
-namespace RPT
+/// <summary>
+/// 游戏入口
+/// </summary>
+public partial class GameEntry : MonoBehaviour
 {
-    /// <summary>
-    /// 游戏入口
-    /// </summary>
-    public partial class GameEntry : MonoBehaviour
+
+    private static void InitCustomComponents()
     {
 
-        private static void InitCustomComponents()
-        {
-
-        }
     }
 }
