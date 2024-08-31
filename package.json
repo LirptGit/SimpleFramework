@@ -1,7 +1,7 @@
 {
 	"name" : "com.unity.simpleframework",
 	"description": "This is a Simple Framework.",
-	"version" : "0.0.1",
+	"version" : "0.0.2",
 	"displayName" : "SimpleFramework",
 	"samples": [
 		{
