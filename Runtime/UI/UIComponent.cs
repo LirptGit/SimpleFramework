@@ -6,7 +6,7 @@ namespace SimpleFramework
     public class UIComponent : SimpleFrameworkComponent 
     {
         [Header("需要使用AB包加载, 请填写ab包文件名字全称")]
-        [SerializeField] private string abName;
+        [SerializeField] private string projectName;
 
         [SerializeField] private Transform m_InstanceRoot = null;
 
@@ -113,20 +113,20 @@ namespace SimpleFramework
                     m_isLoading.Add(uiFormAssetName);
                     switch (loaderType)
                     {
-                        case LoaderType.ResourceLoad:
-                            m_Loader.ResourceLoadAsset(uiFormAssetName, (UnityEngine.Object obj) =>
+                        case LoaderType.Resources:
+                            m_Loader.ResourceLoadAsset<GameObject>(uiFormAssetName, (UnityEngine.Object obj) => 
                             {
                                 LoadFinishedCallBack(obj, uiGroup, uiFormAssetName, userData);
                             });
                             break;
                         case LoaderType.Asserbundle:
-                            m_Loader.LoadAsset(abName, uiFormAssetName, (UnityEngine.Object obj) =>
+                            m_Loader.LoadAsset<GameObject>(projectName, uiFormAssetName, (UnityEngine.Object obj) =>
                             {
                                 LoadFinishedCallBack(obj, uiGroup, uiFormAssetName, userData);
                             });
                             break;
                         case LoaderType.AsserbundleAsync:
-                            m_Loader.LoadAssetAnsy(abName, uiFormAssetName, typeof(GameObject), (UnityEngine.Object obj) =>
+                            m_Loader.LoadAssetAnsy<GameObject>(projectName, uiFormAssetName, (UnityEngine.Object obj) =>
                             {
                                 LoadFinishedCallBack(obj, uiGroup, uiFormAssetName, userData);
                             });
