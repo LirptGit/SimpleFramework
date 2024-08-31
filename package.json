@@ -9,8 +9,5 @@
 			"description": "This is a Simple Demo",
 			"path": "Samples~/SimpleFrameworkDemo"
 		}
-	] ,
-	"dependencies": { 
-		"com.unity.nuget.newtonsoft-json": "3.2.1"
-	}
+	] 
 }

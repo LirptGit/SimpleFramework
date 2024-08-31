@@ -1,15 +1,18 @@
 ﻿using UnityEngine;
 
-/// <summary>
-/// 游戏入口。
-/// </summary>
-public partial class GameEntry : MonoBehaviour
+namespace SimpleFrameworkDemo
 {
-    public string msg = "游戏入口";
-
-    private void Start()
+    /// <summary>
+    /// 游戏入口。
+    /// </summary>
+    public partial class GameEntry : MonoBehaviour
     {
-        InitBuiltinComponents();
-        InitCustomComponents();
+        public string msg = "游戏入口";
+
+        private void Start()
+        {
+            InitBuiltinComponents();
+            InitCustomComponents();
+        }
     }
 }
