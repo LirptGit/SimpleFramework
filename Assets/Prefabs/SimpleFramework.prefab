@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6153955920637690458}
   - component: {fileID: 6379831349754254366}
-  - component: {fileID: 9041289880462120857}
+  - component: {fileID: 6870701168412737457}
   m_Layer: 0
   m_Name: UISound
   m_TagString: Untagged
@@ -129,7 +129,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &9041289880462120857
+--- !u!114 &6870701168412737457
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -138,11 +138,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 178988742278345081}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad6f6db9582a6364b918c3195c454b90, type: 3}
+  m_Script: {fileID: 11500000, guid: 711d35e66d0133940afc46fb3f9befae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clips:
-  - {fileID: 8300000, guid: b09106725a50dc4499a3bb4c83dac4ad, type: 3}
+  clips: []
   randomizePitch: 0
   pitchRange: 0.2
 --- !u!1 &269468803218885899
@@ -154,7 +153,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3846996005248686098}
-  - component: {fileID: 6964376530785462148}
+  - component: {fileID: 7324479273590933716}
   m_Layer: 0
   m_Name: UI
   m_TagString: Untagged
@@ -178,7 +177,7 @@ Transform:
   - {fileID: 8307756070383763247}
   m_Father: {fileID: 2048122888646882798}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6964376530785462148
+--- !u!114 &7324479273590933716
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -187,15 +186,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 269468803218885899}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a7660c54c9635d45b90580eb4899dad, type: 3}
+  m_Script: {fileID: 11500000, guid: 97edc65815fd90a49b4db97d1fc8f06d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abName: 
+  projectName: 
   m_InstanceRoot: {fileID: 8307756070383763247}
-  m_Loader: {fileID: 7268339280862925716}
-  loaderType: 0
-  uiGroups:
-  - Video
+  m_Loader: {fileID: 5726633414312115741}
+  loaderType: 1
+  uiGroups: []
 --- !u!1 &313828073237910314
 GameObject:
   m_ObjectHideFlags: 0
@@ -205,7 +203,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 184408455671939377}
-  - component: {fileID: 4497232653354621153}
+  - component: {fileID: 3234081513244103639}
   m_Layer: 0
   m_Name: Sound
   m_TagString: Untagged
@@ -229,7 +227,7 @@ Transform:
   - {fileID: 7203073880043247156}
   m_Father: {fileID: 2048122888646882798}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4497232653354621153
+--- !u!114 &3234081513244103639
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -238,15 +236,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 313828073237910314}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0197e129e2196934c90aa7a12ae42769, type: 3}
+  m_Script: {fileID: 11500000, guid: eb658f4c4cde3714e90b67ec9c178fda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_MusicAudioSource: {fileID: 6656255423106153009}
   m_VoiceAudioSource: {fileID: 8962848262927512051}
   m_UIAudioSource:
-  - {fileID: 5871890099885130937}
-  - {fileID: 3232853187217552556}
-  - {fileID: 9041289880462120857}
+  - {fileID: 8595614549003354106}
+  - {fileID: 2982855538265954718}
+  - {fileID: 6870701168412737457}
 --- !u!1 &2217332966075487231
 GameObject:
   m_ObjectHideFlags: 0
@@ -257,7 +255,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1716787053621817973}
   - component: {fileID: 292066602839844050}
-  - component: {fileID: 3232853187217552556}
+  - component: {fileID: 2982855538265954718}
   m_Layer: 0
   m_Name: UISound
   m_TagString: Untagged
@@ -376,7 +374,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &3232853187217552556
+--- !u!114 &2982855538265954718
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -385,11 +383,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2217332966075487231}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad6f6db9582a6364b918c3195c454b90, type: 3}
+  m_Script: {fileID: 11500000, guid: 711d35e66d0133940afc46fb3f9befae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clips:
-  - {fileID: 8300000, guid: b09106725a50dc4499a3bb4c83dac4ad, type: 3}
+  clips: []
   randomizePitch: 0
   pitchRange: 0.2
 --- !u!1 &2637652104670813536
@@ -597,7 +594,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8076865059046115545}
-  - component: {fileID: 7603295019415746627}
+  - component: {fileID: 1064070449587745572}
   m_Layer: 0
   m_Name: Scene
   m_TagString: Untagged
@@ -620,7 +617,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2048122888646882798}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7603295019415746627
+--- !u!114 &1064070449587745572
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -629,7 +626,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3857164965680055153}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff4df09423db3954fa7ac7cec4d168eb, type: 3}
+  m_Script: {fileID: 11500000, guid: 1a164055ab5ae3443a8749b166854c25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   LoadSceneProgress: 0
@@ -642,7 +639,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3768026924467016410}
-  - component: {fileID: 5989807911208512410}
+  - component: {fileID: 1448204915555999596}
   m_Layer: 0
   m_Name: Object Pool
   m_TagString: Untagged
@@ -665,7 +662,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2048122888646882798}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5989807911208512410
+--- !u!114 &1448204915555999596
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -674,7 +671,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3938593221292672221}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1fb5b2b7baa29174d9b1a6a21022e28f, type: 3}
+  m_Script: {fileID: 11500000, guid: d8a48920372bb514ba0a6950a618e5c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &4427998465010860537
@@ -814,7 +811,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2048122888646882798}
-  - component: {fileID: 9205279029948284647}
+  - component: {fileID: 8971731874471087938}
   m_Layer: 0
   m_Name: Builtin
   m_TagString: Untagged
@@ -843,7 +840,7 @@ Transform:
   - {fileID: 3846996005248686098}
   m_Father: {fileID: 1549429338609695639}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &9205279029948284647
+--- !u!114 &8971731874471087938
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -852,10 +849,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 4952031041360888957}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12e7a15e61be7054f81fd8f58ceee0f9, type: 3}
+  m_Script: {fileID: 11500000, guid: 88fb3fa1886ad6943b3841faf77bf28e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FrameRate: 120
+  m_FrameRate: 60
 --- !u!1 &5559836068398790234
 GameObject:
   m_ObjectHideFlags: 0
@@ -897,7 +894,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3785403623869251928}
-  - component: {fileID: 7268339280862925716}
+  - component: {fileID: 5726633414312115741}
   m_Layer: 0
   m_Name: ResourceLoader
   m_TagString: Untagged
@@ -920,7 +917,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2048122888646882798}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7268339280862925716
+--- !u!114 &5726633414312115741
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -929,10 +926,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 6987080490670992875}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0901951c5c05b84bb44a172a14ccc12, type: 3}
+  m_Script: {fileID: 11500000, guid: cf7141c7d7f76c24b9a6df88a1888fd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abPath: 
 --- !u!1 &7570736864042228315
 GameObject:
   m_ObjectHideFlags: 0
@@ -943,7 +939,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2311548245310839821}
   - component: {fileID: 2763649317071507771}
-  - component: {fileID: 5871890099885130937}
+  - component: {fileID: 8595614549003354106}
   m_Layer: 0
   m_Name: UISound
   m_TagString: Untagged
@@ -1062,7 +1058,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &5871890099885130937
+--- !u!114 &8595614549003354106
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1071,11 +1067,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 7570736864042228315}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad6f6db9582a6364b918c3195c454b90, type: 3}
+  m_Script: {fileID: 11500000, guid: 711d35e66d0133940afc46fb3f9befae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clips:
-  - {fileID: 8300000, guid: b09106725a50dc4499a3bb4c83dac4ad, type: 3}
+  clips: []
   randomizePitch: 0
   pitchRange: 0.2
 --- !u!1 &8169266891991351476
@@ -1087,7 +1082,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2772210856013922683}
-  - component: {fileID: 8854208093002157073}
+  - component: {fileID: 4914907545872585212}
   m_Layer: 0
   m_Name: Event
   m_TagString: Untagged
@@ -1110,7 +1105,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2048122888646882798}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8854208093002157073
+--- !u!114 &4914907545872585212
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1119,7 +1114,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8169266891991351476}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe0ce73bf8c3d0840a41b2d2cab32036, type: 3}
+  m_Script: {fileID: 11500000, guid: b027b8aef4ddab84fa7d69b91c69af33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &8755379076843416136

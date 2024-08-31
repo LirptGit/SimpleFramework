@@ -26,7 +26,6 @@ namespace SimpleFrameworkDemo
             private set;
         }
 
-
         /// <summary>
         /// 获取对象池组件
         /// </summary>
@@ -83,4 +82,5 @@ namespace SimpleFrameworkDemo
             UI = SimpleFramework.GameEntry.GetComponent<UIComponent>();
         }
     }
+
 }
