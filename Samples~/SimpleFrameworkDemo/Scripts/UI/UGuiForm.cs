@@ -7,14 +7,14 @@ public class UGuiForm : UIFormLogic
     private const float FadeTime = 0.2f;
 
     private CanvasGroup m_CanvasGroup = null;
-    protected internal override void OnInit(object userData)
+    protected override void OnInit(object userData)
     {
         base.OnInit(userData);
 
         m_CanvasGroup = gameObject.GetOrAddComponent<CanvasGroup>();
     }
 
-    protected internal override void OnOpen(object userData)
+    protected override void OnOpen(object userData)
     {
         base.OnOpen(userData);
 
@@ -24,7 +24,7 @@ public class UGuiForm : UIFormLogic
         StartCoroutine(FadeToAlpha(m_CanvasGroup, 1f, FadeTime));
     }
 
-    protected internal override void OnClose(object userData)
+    protected override void OnClose(object userData)
     {
         base.OnClose(userData);
     }

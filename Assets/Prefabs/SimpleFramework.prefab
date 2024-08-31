@@ -192,9 +192,8 @@ MonoBehaviour:
   projectName: 
   m_InstanceRoot: {fileID: 8307756070383763247}
   m_Loader: {fileID: 5726633414312115741}
-  loaderType: 0
-  uiGroups:
-  - Video
+  loaderType: 1
+  uiGroups: []
 --- !u!1 &313828073237910314
 GameObject:
   m_ObjectHideFlags: 0

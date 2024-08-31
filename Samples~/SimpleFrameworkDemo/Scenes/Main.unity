@@ -488,7 +488,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7324479273590933716, guid: e43ea86002310b241b807e063cffd674, type: 3}
       propertyPath: projectName
-      value: Taiji
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7324479273590933716, guid: e43ea86002310b241b807e063cffd674, type: 3}
       propertyPath: m_InstanceRoot
@@ -496,7 +496,7 @@ PrefabInstance:
       objectReference: {fileID: 2106255377}
     - target: {fileID: 7324479273590933716, guid: e43ea86002310b241b807e063cffd674, type: 3}
       propertyPath: uiGroups.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7324479273590933716, guid: e43ea86002310b241b807e063cffd674, type: 3}
       propertyPath: uiGroups.Array.data[0]
