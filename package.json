@@ -10,7 +10,7 @@
 			"path": "Samples~/SimpleFrameworkDemo"
 		}
 	] ,
-  "dependencies": { 
-    "com.unity.nuget.newtonsoft-json": "3.2.1"
-  }
+	"dependencies": { 
+		"com.unity.nuget.newtonsoft-json": "3.2.1"
+	}
 }
