@@ -1,24 +1,10 @@
-using System;
-
 namespace SimpleFramework
 {
     /// <summary>
-    /// ÓÎÏ·Âß¼­ÊÂ¼ş»ùÀà¡£
+    /// æ¸¸æˆé€»è¾‘äº‹ä»¶åŸºç±»ã€‚
     /// </summary>
-    public abstract class GameEventArgs : EventArgs, IReference
+    public abstract class GameEventArgs : BaseEventArgs
     {
-        /// <summary>
-        /// »ñÈ¡ÀàĞÍ±àºÅ
-        /// </summary>
-        public abstract int Id
-        {
-            get;
-        }
-
-        /// <summary>
-        /// ÇåÀíÒıÓÃ¡£
-        /// </summary>
-        public abstract void Clear();
+		
     }
 }
-
