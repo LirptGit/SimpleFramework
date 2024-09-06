@@ -6,8 +6,13 @@
 	"samples": [
 		{
 			"displayName": "SimpleFrameworkDemo",
-			"description": "This is a Simple Demo",
+			"description": "这是一个框架启动的基础脚本Demo",
 			"path": "Samples~/SimpleFrameworkDemo"
+		},
+		{
+			"displayName": "HierarchySkin",
+			"description": "这是Hierarchy窗口选项的颜色皮肤",
+			"path": "Samples~/HierarchySkin"
 		}
 	] ,
 	"dependencies": { 
