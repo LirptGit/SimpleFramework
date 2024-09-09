@@ -4,14 +4,14 @@ using System.Collections.Generic;
 namespace SimpleFramework
 {
     /// <summary>
-    /// ÒıÓÃ³Ø
+    /// å¼•ç”¨æ± 
     /// </summary>
     public static class ReferencePool
     {
         private static readonly Dictionary<Type, ReferenceCollection> m_ReferenceCollections = new Dictionary<Type, ReferenceCollection>();
 
         /// <summary>
-        /// »ñÈ¡ÒıÓÃ³ØµÄÊıÁ¿
+        /// è·å–å¼•ç”¨æ± çš„æ•°é‡
         /// </summary>
         public static int Count
         {
@@ -22,7 +22,7 @@ namespace SimpleFramework
         }
 
         /// <summary>
-        /// ÇåÀíËùÓĞµÄÒıÓÃ³Ø
+        /// æ¸…ç†æ‰€æœ‰çš„å¼•ç”¨æ± 
         /// </summary>
         public static void ClearAll()
         {
@@ -36,7 +36,7 @@ namespace SimpleFramework
         }
 
         /// <summary>
-        /// ´ÓÒıÓÃ³Ø»ñÈ¡ÒıÓÃ
+        /// ä»å¼•ç”¨æ± è·å–å¼•ç”¨
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
@@ -46,7 +46,7 @@ namespace SimpleFramework
         }
 
         /// <summary>
-        /// ½«ÒıÓÃ¹é»¹ÒıÓÃ³Ø
+        /// å°†å¼•ç”¨å½’è¿˜å¼•ç”¨æ± 
         /// </summary>
         /// <param name="reference"></param>
         public static void Release(IReference reference)
@@ -57,14 +57,14 @@ namespace SimpleFramework
             }
 
             Type referenceType = reference.GetType();
-            GetReferenceCollection(referenceType);
+            GetReferenceCollection(referenceType).Release(reference);
         }
 
         /// <summary>
-        /// »ñÈ¡¶ÔÓ¦ÀàĞÍµÄÒıÓÃ³ØÊÕ¼¯Õß
+        /// è·å–å¯¹åº”ç±»å‹çš„å¼•ç”¨æ± æ”¶é›†è€…
         /// </summary>
-        /// <param name="referenceType">Òª»ñÈ¡ÀàĞÍ</param>
-        /// <returns>¶ÔÓ¦ÀàĞÍµÄÊÕ¼¯Õß</returns>
+        /// <param name="referenceType">è¦è·å–ç±»å‹</param>
+        /// <returns>å¯¹åº”ç±»å‹çš„æ”¶é›†è€…</returns>
         private static ReferenceCollection GetReferenceCollection(Type referenceType)
         {
             if (referenceType == null)
