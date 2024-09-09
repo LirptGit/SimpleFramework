@@ -1,45 +1,10 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-#region Ê¾Àı
-
-//        private void OnEnable()
-//        {
-//            ai = BT.Root();
-//            ai.OpenBranch(
-//                BT.SetActive(child, true),
-//                BT.Call(() => { this.transform.DOMoveX(1, 2); }),
-//                BT.Wait(2),
-//                BT.Call(() => { Debug.Log("¿ªÃÅ£º ¶¯»­Ö´ĞĞÍê±Ï"); }),
-//                BT.If(IsClose).OpenBranch(
-//                     BT.SetActive(child, false),
-//                     BT.Call(() => { this.transform.DOMoveX(0, 2); }),
-//                     BT.Wait(2),
-//                     BT.Call(() => { Debug.Log("¹ØÃÅ£º¶¯»­Ö´ĞĞÍê±Ï"); })
-//                ),
-//                BT.Call(() => { Debug.Log("aiÒÑÍê³É"); }),
-//                BT.Terminate()
-//            );
-//        }
-
-//        private void Update()
-//        {
-//            ai.Tick();
-//        }
-
-//        bool IsClose()
-//        {
-//            return isClose;
-//        }
-//    }
-//}
-
-#endregion
-
 namespace SimpleFramework
 {
     /// <summary>
-    /// ai½ø¶ÈÀàĞÍ
+    /// aiè¿›åº¦ç±»å‹
     /// </summary>
     public enum BTState
     {
@@ -50,7 +15,7 @@ namespace SimpleFramework
     }
 
     /// <summary>
-    /// ai Ä£Ê½¼¯ºÏ
+    /// ai æ¨¡å¼é›†åˆ
     /// </summary>
     public static class BT
     {
@@ -76,7 +41,7 @@ namespace SimpleFramework
     }
 
     /// <summary>
-    /// ½Úµã
+    /// èŠ‚ç‚¹
     /// </summary>
     public abstract class BTNode
     {
@@ -84,7 +49,7 @@ namespace SimpleFramework
     }
 
     /// <summary>
-    /// ·ÖÖ§
+    /// åˆ†æ”¯
     /// </summary>
     public abstract class Branch : BTNode
     {
@@ -115,7 +80,7 @@ namespace SimpleFramework
     }
 
     /// <summary>
-    /// ¿é
+    /// å—
     /// </summary>
     public abstract class Block : Branch
     {
@@ -138,7 +103,7 @@ namespace SimpleFramework
     }
 
     /// <summary>
-    /// ai ¸ùÄ¿Â¼
+    /// ai æ ¹ç›®å½•
     /// </summary>
     public class Root : Block
     {
@@ -172,7 +137,7 @@ namespace SimpleFramework
     }
 
     /// <summary>
-    /// ÉèÖÃÎïÌåÏÔÊ¾Òş²Ø½Úµã
+    /// è®¾ç½®ç‰©ä½“æ˜¾ç¤ºéšè—èŠ‚ç‚¹
     /// </summary>
     public class SetActive : BTNode
     {
@@ -193,7 +158,7 @@ namespace SimpleFramework
     }
 
     /// <summary>
-    /// ÊÂ¼şµ÷ÓÃ
+    /// äº‹ä»¶è°ƒç”¨
     /// </summary>
     public class Action : BTNode
     {
@@ -212,7 +177,7 @@ namespace SimpleFramework
     }
 
     /// <summary>
-    /// ÔİÍ£µÈ´ı
+    /// æš‚åœç­‰å¾…
     /// </summary>
     public class Wait : BTNode
     {
@@ -242,7 +207,7 @@ namespace SimpleFramework
     }
 
     /// <summary>
-    /// ¿é£º ifÌõ¼şÅĞ¶Ï
+    /// å—ï¼š ifæ¡ä»¶åˆ¤æ–­
     /// </summary>
     public class ConditionalBranch : Block 
     {
@@ -281,7 +246,7 @@ namespace SimpleFramework
     }
 
     /// <summary>
-    /// ¿é£º µ±Ìõ¼şÎªtrueÊ±£¬Ñ­»·Ö´ĞĞÈ«²¿µÄ×ÓÎïÌå
+    /// å—ï¼š å½“æ¡ä»¶ä¸ºtrueæ—¶ï¼Œå¾ªç¯æ‰§è¡Œå…¨éƒ¨çš„å­ç‰©ä½“
     /// </summary>
     public class While : Block
     {
@@ -309,7 +274,7 @@ namespace SimpleFramework
     }
 
     /// <summary>
-    /// ¼¤»îÒ»¸ö¶¯»­µÄ´¥·¢Æ÷
+    /// æ¿€æ´»ä¸€ä¸ªåŠ¨ç”»çš„è§¦å‘å™¨
     /// </summary>
     public class Trigger : BTNode
     {
@@ -342,7 +307,7 @@ namespace SimpleFramework
     }
 
     /// <summary>
-    /// Îª¶¯»­ÉèÖÃboolÖµ
+    /// ä¸ºåŠ¨ç”»è®¾ç½®boolå€¼
     /// </summary>
     public class SetBool : BTNode
     {
@@ -367,7 +332,7 @@ namespace SimpleFramework
     }
 
     /// <summary>
-    /// µÈ´ı¶¯»­µ½´ïÄ³¸ö×´Ì¬
+    /// ç­‰å¾…åŠ¨ç”»åˆ°è¾¾æŸä¸ªçŠ¶æ€
     /// </summary>
     public class WaitForAnimatorState : BTNode
     {
@@ -398,7 +363,7 @@ namespace SimpleFramework
     }
 
     /// <summary>
-    /// ÖÕÖ¹½Úµã
+    /// ç»ˆæ­¢èŠ‚ç‚¹
     /// </summary>
     public class Terminate : BTNode
     {
