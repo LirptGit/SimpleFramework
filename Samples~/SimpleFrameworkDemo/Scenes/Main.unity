@@ -479,6 +479,10 @@ PrefabInstance:
       value: SimpleFramework
       objectReference: {fileID: 0}
     - target: {fileID: 7324479273590933716, guid: e43ea86002310b241b807e063cffd674, type: 3}
+      propertyPath: abName
+      value: uipanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 7324479273590933716, guid: e43ea86002310b241b807e063cffd674, type: 3}
       propertyPath: m_Loader
       value: 
       objectReference: {fileID: 2106255378}
@@ -496,14 +500,15 @@ PrefabInstance:
       objectReference: {fileID: 2106255377}
     - target: {fileID: 7324479273590933716, guid: e43ea86002310b241b807e063cffd674, type: 3}
       propertyPath: uiGroups.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7324479273590933716, guid: e43ea86002310b241b807e063cffd674, type: 3}
       propertyPath: uiGroups.Array.data[0]
-      value: Video
+      value: Test
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 3386946191948127074, guid: e43ea86002310b241b807e063cffd674, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 5559836068398790234, guid: e43ea86002310b241b807e063cffd674, type: 3}

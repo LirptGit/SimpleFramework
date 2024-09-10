@@ -10,9 +10,6 @@ namespace SimpleFramework
         [Header("Voice Settings")]
         [SerializeField] private AudioSource m_VoiceAudioSource;
 
-        [Header("UI Settings")]
-        [SerializeField] private RandomSoundPlayer[] m_UIAudioSource;
-
         private AudioListener m_AudioListener = null;
 
         /// <summary>
@@ -45,18 +42,6 @@ namespace SimpleFramework
         public void StopVoice()
         {
             m_VoiceAudioSource.Stop();
-        }
-
-        public void PlayUIClick() 
-        {
-            for (int i = 0; i < m_UIAudioSource.Length; i++)
-            {
-                if (m_UIAudioSource[i].isCanPlay)
-                {
-                    m_UIAudioSource[i].PlayRandomSound();
-                    break;
-                }
-            }
         }
 
         private void Update()

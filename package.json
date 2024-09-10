@@ -16,6 +16,6 @@
 		}
 	] ,
 	"dependencies": { 
-		"com.unity.nuget.newtonsoft-json": "3.2.1"
+		"com.unity.assetbundlebrowser": "1.7.0"
 	}
 }
