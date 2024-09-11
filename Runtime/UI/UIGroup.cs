@@ -66,5 +66,18 @@ namespace SimpleFramework
             }
             return null;
         }
+
+        public List<UIForm> GetAllUIForm()
+        {
+            return uiFormList;
+        }
+
+        public void RemoveUIForm(UIForm uiFormAsset) 
+        {
+            if (uiFormList.Contains(uiFormAsset))
+            {
+                uiFormList.Remove(uiFormAsset);
+            }
+        }
     }
 }

@@ -426,7 +426,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 923998385}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!1001 &2106255374
+--- !u!114 &1872046484 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1448204915555999596, guid: e43ea86002310b241b807e063cffd674, type: 3}
+  m_PrefabInstance: {fileID: 816097984391902259}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8a48920372bb514ba0a6950a618e5c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1001 &816097984391902259
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -479,25 +490,9 @@ PrefabInstance:
       value: SimpleFramework
       objectReference: {fileID: 0}
     - target: {fileID: 7324479273590933716, guid: e43ea86002310b241b807e063cffd674, type: 3}
-      propertyPath: abName
-      value: uipanel
-      objectReference: {fileID: 0}
-    - target: {fileID: 7324479273590933716, guid: e43ea86002310b241b807e063cffd674, type: 3}
-      propertyPath: m_Loader
+      propertyPath: m_Pool
       value: 
-      objectReference: {fileID: 2106255378}
-    - target: {fileID: 7324479273590933716, guid: e43ea86002310b241b807e063cffd674, type: 3}
-      propertyPath: loaderType
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7324479273590933716, guid: e43ea86002310b241b807e063cffd674, type: 3}
-      propertyPath: projectName
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 7324479273590933716, guid: e43ea86002310b241b807e063cffd674, type: 3}
-      propertyPath: m_InstanceRoot
-      value: 
-      objectReference: {fileID: 2106255377}
+      objectReference: {fileID: 1872046484}
     - target: {fileID: 7324479273590933716, guid: e43ea86002310b241b807e063cffd674, type: 3}
       propertyPath: uiGroups.Array.size
       value: 1
@@ -507,42 +502,25 @@ PrefabInstance:
       value: Test
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 3386946191948127074, guid: e43ea86002310b241b807e063cffd674, type: 3}
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 5559836068398790234, guid: e43ea86002310b241b807e063cffd674, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2106255381}
+      addedObject: {fileID: 5559836067015335511}
   m_SourcePrefab: {fileID: 100100000, guid: e43ea86002310b241b807e063cffd674, type: 3}
---- !u!1 &2106255375 stripped
+--- !u!1 &5559836067015335508 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5559836068398790234, guid: e43ea86002310b241b807e063cffd674, type: 3}
-  m_PrefabInstance: {fileID: 2106255374}
+  m_PrefabInstance: {fileID: 816097984391902259}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &2106255377 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8307756070383763247, guid: e43ea86002310b241b807e063cffd674, type: 3}
-  m_PrefabInstance: {fileID: 2106255374}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2106255378 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5726633414312115741, guid: e43ea86002310b241b807e063cffd674, type: 3}
-  m_PrefabInstance: {fileID: 2106255374}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf7141c7d7f76c24b9a6df88a1888fd6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &2106255381
+--- !u!114 &5559836067015335511
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2106255375}
+  m_GameObject: {fileID: 5559836067015335508}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3d09b8a3e8c0e7e4dbcfd2fa52bf69ea, type: 3}
@@ -556,4 +534,4 @@ SceneRoots:
   - {fileID: 923998385}
   - {fileID: 108894014}
   - {fileID: 1692509497}
-  - {fileID: 2106255374}
+  - {fileID: 816097984391902259}

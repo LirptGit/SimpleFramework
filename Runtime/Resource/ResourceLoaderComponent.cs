@@ -7,15 +7,18 @@ namespace SimpleFramework
 {
     public enum LoaderType
     {
-        Resources,
         Asserbundle,
         AsserbundleAsync,
     }
 
     public class ResourceLoaderComponent : SimpleFrameworkComponent
     {
-        private static AssetBundle dependenceBundle = null;
+        public string Tip = "使用前请按照情况修改abPath的路径，以及mainABName的名字";
+        private AssetBundle dependenceBundle = null;
         private readonly Dictionary<string, AssetBundle> abDir = new Dictionary<string, AssetBundle>();
+        private readonly Dictionary<string, List<string>> abAssetNameDir = new Dictionary<string, List<string>>();
+        private readonly Dictionary<string, UnityEngine.Object> assetDir = new Dictionary<string, UnityEngine.Object>();
+
         private string abPath
         {
             get
@@ -35,12 +38,6 @@ namespace SimpleFramework
         protected override void Awake()
         {
             base.Awake();
-        }
-
-        public UnityEngine.Object ResourceLoadAsset<T>(string assetName) where T : UnityEngine.Object
-        {
-            UnityEngine.Object obj = Resources.Load<T>(assetName);
-            return obj;
         }
 
         /// <summary>
@@ -70,6 +67,14 @@ namespace SimpleFramework
                 AssetBundleRequest abr = ab.LoadAssetAsync<T>(assetName);
                 yield return abr;
                 action?.Invoke(abr.asset);
+
+                AddABAssetNameDictionary(abName, assetName, abr.asset);
+            }
+
+            if (assetDir.ContainsKey(assetName))
+            {
+                action?.Invoke(assetDir[assetName]);
+                return;
             }
 
             AssetBundle ab = LoadAB(abName);
@@ -89,6 +94,7 @@ namespace SimpleFramework
 
             abDir[abName].Unload(true);
             abDir.Remove(abName);
+            RemoveABAssetNameDictionary(abName);
         }
 
         /// <summary>
@@ -140,6 +146,37 @@ namespace SimpleFramework
             AssetBundleManifest manifest = dependenceBundle.LoadAsset<AssetBundleManifest>("AssetBundleManifest");
             string[] dependences = manifest.GetAllDependencies(abName);
             return dependences;
+        }
+
+        private void AddABAssetNameDictionary(string abName, string assetName, UnityEngine.Object obj) 
+        {
+            if (!abAssetNameDir.ContainsKey(abName))
+            {
+                abAssetNameDir.Add(abName, new List<string>());
+            }
+
+            if (abAssetNameDir.TryGetValue(abName, out List<string> value))
+            {
+                value.Add(assetName);
+                assetDir.Add(assetName, obj);
+            }
+        }
+
+        private void RemoveABAssetNameDictionary(string abName) 
+        {
+            if (!abAssetNameDir.ContainsKey(abName))
+            {
+                return;
+            }
+
+            for (int i = 0; i < abAssetNameDir[abName].Count; i++)
+            {
+                string assetName = abAssetNameDir[abName][i];
+                assetDir.Remove(assetName);
+                Debug.Log($"移除{abName}中的资源{assetName}");
+            }
+
+            abAssetNameDir.Remove(abName);
         }
     }
 }

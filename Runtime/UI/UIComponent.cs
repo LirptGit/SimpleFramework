@@ -1,22 +1,29 @@
-using System.Collections.Generic;
 using UnityEngine;
+using System.Collections.Generic;
 
 namespace SimpleFramework
 {
-    public class UIComponent : SimpleFrameworkComponent 
+    public partial class UIComponent : SimpleFrameworkComponent
     {
-        [Header("需要使用AB包加载, 请填写ab包文件名字全称")]
-        [SerializeField] private string abName;
-
+        [Header("UI Instances Root")]
         [SerializeField] private Transform m_InstanceRoot = null;
 
+        [Header("Resource Loader")]
         [SerializeField] private ResourceLoaderComponent m_Loader = null;
         [SerializeField] private LoaderType loaderType;
 
+        [Header("Object Pool")]
+        [SerializeField] private ObjectPoolComponent m_Pool = null;
+        [SerializeField] private int capacity = 100;
+        private IObjectPool<UIObject> uiPool;
+
+        [Header("组的名字按照场景的名字分类")]
         [SerializeField] private string[] uiGroups = null;
 
-        private readonly List<string> m_isLoading = new();
-        private readonly Dictionary<string, UIGroup> m_UIGroupDict = new();
+        private readonly List<string> m_isLoading = new List<string>();
+        private readonly Dictionary<string, UIGroup> m_UIGroupDict = new Dictionary<string, UIGroup>();
+        private readonly List<UIObject> releaseUICache = new List<UIObject>();
+        private readonly Queue<UIObject> releaseUIQueue = new Queue<UIObject>();
 
         /// <summary>
         /// 游戏框架组件初始化
@@ -32,9 +39,23 @@ namespace SimpleFramework
                 m_InstanceRoot.localScale = Vector3.one;
             }
 
+            uiPool = m_Pool.CreateObjectPool<UIObject>("UI Pool", capacity);
+
             for (int i = 0; i < uiGroups.Length; i++)
             {
                 AddUIGroup(uiGroups[i]);
+            }
+        }
+
+        private void Update()
+        {
+            if (releaseUIQueue.Count > 0)
+            {
+                UIObject uiObject = releaseUIQueue.Dequeue();
+                if (uiPool.ReleaseObject(uiObject))
+                {
+                    releaseUICache.Remove(uiObject);
+                }
             }
         }
 
@@ -96,9 +117,11 @@ namespace SimpleFramework
         /// <summary>
         /// 打开界面
         /// </summary>
+        /// <param name="abName">ab包的名字</param>
         /// <param name="uiFormAssetName">界面资源名称</param>
         /// <param name="uiGroupName">界面组名称</param>
-        public void OpenUIForm(string uiFormAssetName, string uiGroupName, object userData)
+        /// <param name="userData">参数</param>
+        public void OpenUIForm(string abName, string uiFormAssetName, string uiGroupName, object userData)
         {
             UIGroup uiGroup = (UIGroup)GetUIGroup(uiGroupName);
 
@@ -113,9 +136,6 @@ namespace SimpleFramework
                     m_isLoading.Add(uiFormAssetName);
                     switch (loaderType)
                     {
-                        case LoaderType.Resources:
-                            LoadFinishedCallBack(m_Loader.ResourceLoadAsset<GameObject>(uiFormAssetName), uiGroup, uiFormAssetName, userData);
-                            break;
                         case LoaderType.Asserbundle:
                             LoadFinishedCallBack(m_Loader.LoadAsset<GameObject>(abName, uiFormAssetName), uiGroup, uiFormAssetName, userData);
                             break;
@@ -127,6 +147,26 @@ namespace SimpleFramework
                             break;
                     }
                 }
+            }
+        }
+
+        /// <summary>
+        /// 打开界面
+        /// </summary>
+        /// <param name="uiPanel">界面预制体</param>
+        /// <param name="uiGroupName">界面组名称</param>
+        /// <param name="userData">参数</param>
+        public void OpenUIForm(GameObject uiPanel, string uiGroupName, object userData) 
+        {
+            UIGroup uiGroup = (UIGroup)GetUIGroup(uiGroupName);
+
+            if (uiGroup.HasUIForm(uiPanel.name))
+            {
+                uiGroup.GetUIForm(uiPanel.name).OnOpen(userData);
+            }
+            else
+            {
+                LoadFinishedCallBack(uiPanel, uiGroup, uiPanel.name, userData);
             }
         }
 
@@ -144,10 +184,45 @@ namespace SimpleFramework
             }
         }
 
+        /// <summary>
+        /// 释放界面资源
+        /// </summary>
+        /// <param name="uiForm">界面</param>
+        public void ReleaseUIForm(UIForm uiForm)
+        {
+            UIGroup uiGroup = uiForm.UIGroup;
+
+            for (int i = 0; i < releaseUICache.Count; i++)
+            {
+                UIForm curUIForm = releaseUICache[i].Target as UIForm;
+                if (curUIForm == uiForm)
+                {
+                    CloseUIForm(uiForm, null);
+                    uiGroup.RemoveUIForm(uiForm);
+                    uiPool.Unspawn(releaseUICache[i]);
+                    releaseUIQueue.Enqueue(releaseUICache[i]);
+                }
+            }
+        }
+
+        /// <summary>
+        /// 释放当前组内所有的界面资源
+        /// </summary>
+        /// <param name="uiGroupName"></param>
+        public void ReleaseUIForm(string uiGroupName) 
+        {
+            UIGroup uiGroup = (UIGroup)GetUIGroup(uiGroupName);
+            for (int i = 0; i < uiGroup.GetAllUIForm().Count; i++)
+            {
+                ReleaseUIForm(uiGroup.GetAllUIForm()[i]);
+            }
+        }
+
         private void LoadFinishedCallBack(UnityEngine.Object obj, UIGroup uiGroup, string uiFormAssetName, object userData)
         {
             GameObject go = Instantiate(obj, uiGroup.transform) as GameObject;
             UIForm uiForm = go.GetComponent<UIForm>();
+            CreateUIObject(uiForm);
 
             uiForm.OnInit(uiFormAssetName, uiGroup, userData);
             uiForm.OnOpen(userData);
@@ -155,6 +230,27 @@ namespace SimpleFramework
             uiGroup.AddUIForm(uiForm);
 
             m_isLoading.Remove(uiFormAssetName);
+        }
+
+        /// <summary>
+        /// 创建和获取SoundObject
+        /// </summary>
+        /// <returns></returns>
+        private UIObject CreateUIObject(UIForm uiForm)
+        {
+            UIObject uiObject = uiPool.Spawn();
+            if (uiObject == null)
+            {
+                uiObject = UIObject.Create(uiForm);
+                if (!uiPool.Register(uiObject, true))
+                {
+                    Destroy(gameObject);
+                    ReferencePool.Release(uiObject);
+                    uiObject = null;
+                }
+                releaseUICache.Add(uiObject);
+            }
+            return uiObject;
         }
     }
 }

@@ -21,8 +21,8 @@ namespace SimpleFramework
         /// <param name="capacity">对象池的容量</param>
         public ObjectPool(int capacity)
         {
-            m_Objects = new List<Object<T>>();
-            m_ObjectMap = new Dictionary<object, Object<T>>();
+            m_Objects = new List<Object<T>>(capacity);
+            m_ObjectMap = new Dictionary<object, Object<T>>(capacity);
 
             Capacity = capacity;
         }
@@ -75,7 +75,7 @@ namespace SimpleFramework
         /// </summary>
         /// <param name="obj">对象</param>
         /// <param name="spawned">对象是否已被获取</param>
-        public void Register(T obj, bool spawned)
+        public bool Register(T obj, bool spawned)
         {
             Object<T> internalObject = Object<T>.Create(obj, spawned);
             m_Objects.Add(internalObject);
@@ -85,6 +85,13 @@ namespace SimpleFramework
             {
                 Release();
             }
+            if (Count > m_Capacity)
+            {
+                UnityEngine.Debug.LogError("对象池的容量过小，超出限制");
+                return false;
+            }
+
+            return true;
         }
 
         /// <summary>
@@ -111,6 +118,7 @@ namespace SimpleFramework
         public void Unspawn(T obj)
         {
             Object<T> internalObject = GetObject(obj.Target);
+
             if (internalObject != null)
             {
                 internalObject.Unspawn();
@@ -132,6 +140,11 @@ namespace SimpleFramework
                 }
             }
 
+            if (toReleaseObjects == null)
+            {
+                return;
+            }
+
             ReleaseObject(toReleaseObjects.Peek());
         }
 
@@ -146,6 +159,7 @@ namespace SimpleFramework
 
             if (internalObject.IsInUse)
             {
+                UnityEngine.Debug.Log($"{obj.Target}对象目前正在使用，无法释放");
                 return false;
             }
 

@@ -38,7 +38,7 @@ namespace SimpleFramework
         /// </summary>
         /// <param name="obj">对象</param>
         /// <param name="spawned">对象是否已被获取</param>
-        void Register(T obj, bool spawned);
+        bool Register(T obj, bool spawned);
 
         /// <summary>
         /// 获取对象
