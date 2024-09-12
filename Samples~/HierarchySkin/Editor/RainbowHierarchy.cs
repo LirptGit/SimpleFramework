@@ -11,7 +11,7 @@ using System.Reflection;
 namespace EditorExpand.HierarchyExpand
 {
     /// <summary>
-    /// ²Êºç Hierarchy
+    /// å½©è™¹ Hierarchy
     /// </summary>
     [InitializeOnLoad]
     public class RainbowHierarchy : MonoBehaviour
@@ -23,7 +23,7 @@ namespace EditorExpand.HierarchyExpand
 
 
 
-        [Tooltip("ÅäÖÃÎÄ¼ş¼ĞÂ·¾¶")]
+        [Tooltip("é…ç½®æ–‡ä»¶å¤¹è·¯å¾„")]
         public static string fileDataPath = "Assets/RPTMain/Res/ScriptableObject";
 
         [InitializeOnLoadMethod]
@@ -47,7 +47,7 @@ namespace EditorExpand.HierarchyExpand
             var globalID =  GetLocalIdentifierInFile(target);
 #endif
 
-            // »ñÈ¡ÅäÖÃÊı¾İ±í
+            // è·å–é…ç½®æ•°æ®è¡¨
             var fileName = EditorSceneManager.GetActiveScene().name;
             RainbowHierarchyConfig config = GetScriptableObject(fileName);
 
@@ -58,7 +58,7 @@ namespace EditorExpand.HierarchyExpand
 
             if (unitConfig == null) return;
 
-            #region Ó¦ÓÃÅäÖÃ
+            #region åº”ç”¨é…ç½®
             Texture2D _Bg = CreateDefaultTexture2D(unitConfig);
             GUIStyle FontStyle = CreateGUIStyle(_Bg, unitConfig);
             #endregion
@@ -68,7 +68,7 @@ namespace EditorExpand.HierarchyExpand
 
         private static void OnRainbowButton(int instanceID, Rect selectionRect)
         {
-            // Çå³ıScene
+            // æ¸…é™¤Scene
             UnityEngine.Object target = EditorUtility.InstanceIDToObject(instanceID);
             if (target == null) return;
      
@@ -77,10 +77,10 @@ namespace EditorExpand.HierarchyExpand
 
 
         #region Menu - GameObject
-        [MenuItem("GameObject/²Êºç Hierarchy/Ìí¼Ó²Êºç", priority = 1)]
+        [MenuItem("GameObject/å½©è™¹ Hierarchy/æ·»åŠ å½©è™¹", priority = 1)]
         private static void AddRainbowGUI()
         {
-            // »ñÈ¡ ScriptableObejct
+            // è·å– ScriptableObejct
             var fileName = GetFilePath(EditorSceneManager.GetActiveScene().name);
             var config = AssetDatabase.LoadAssetAtPath<RainbowHierarchyConfig>(fileName);
 
@@ -112,14 +112,14 @@ namespace EditorExpand.HierarchyExpand
             EditorUtility.SetDirty(config);
         }
 
-        [MenuItem("GameObject/²Êºç Hierarchy/ÒÆ³ı²Êºç", priority = 2)]
+        [MenuItem("GameObject/å½©è™¹ Hierarchy/ç§»é™¤å½©è™¹", priority = 2)]
         private static void RemoveRainbowGUI()
         {
             //var localID = GetLocalIdentifierInFile(Selection.activeGameObject);
             var globalID = GlobalObjectId.GetGlobalObjectIdSlow(Selection.activeObject).targetObjectId;
 
 
-            // »ñÈ¡ScriptableObjectÅäÖÃÎÄ¼ş
+            // è·å–ScriptableObjecté…ç½®æ–‡ä»¶
             RainbowHierarchyConfig config = GetScriptableObject(Selection.activeGameObject.scene.name);
 
             var rainbowList = config.RainbowList;
@@ -133,7 +133,7 @@ namespace EditorExpand.HierarchyExpand
             EditorUtility.SetDirty(config);
         }
 
-        [MenuItem("GameObject/²Êºç Hierarchy/Çå³ı²Êºç", priority = 3)]
+        [MenuItem("GameObject/å½©è™¹ Hierarchy/æ¸…é™¤å½©è™¹", priority = 3)]
         private static void ClearAll()
         {
             RainbowHierarchyConfig config = GetScriptableObject(Selection.activeGameObject.scene.name);
@@ -147,7 +147,6 @@ namespace EditorExpand.HierarchyExpand
         #endregion
 
         #region Menu - AssetDatabase
-        [MenuItem("AssetDatabase/²Êºç Hierarchy/²¿ÊğÊı¾İÎÄ¼ş¼Ğ")]
         private static void CreateFolder()
         {
             string[] path = fileDataPath.Split('/');
@@ -176,7 +175,6 @@ namespace EditorExpand.HierarchyExpand
             AssetDatabase.Refresh();
         }
 
-        [MenuItem("AssetDatabase/²Êºç Hierarchy/´´½¨ÅäÖÃÎÄ¼ş")]
         private static void InitScriptObject()
         {
             string dataPath = GetFilePath(Selection.activeGameObject.scene.name);
@@ -222,51 +220,51 @@ namespace EditorExpand.HierarchyExpand
         }
 
         /// <summary>
-        /// ÎÄ¼şÂ·¾¶
+        /// æ–‡ä»¶è·¯å¾„
         /// </summary>
-        /// <param name="name">ÎÄ¼şÃû</param>
+        /// <param name="name">æ–‡ä»¶å</param>
         /// <returns></returns>
         private static string GetFilePath(string name)
         {
-            // ±¸×¢£ºÎ´×÷ name ÊÇ·ñÎª¿ÕµÄÅĞ¶Ï£¬ÒòÒıÓÃ²»È·¶¨ĞÔ£¬Ó¦ÔÚµ÷ÓÃ´Ë·½·¨Ç°½øĞĞÅĞ¶Ï·ÖÎö¡£
+            // å¤‡æ³¨ï¼šæœªä½œ name æ˜¯å¦ä¸ºç©ºçš„åˆ¤æ–­ï¼Œå› å¼•ç”¨ä¸ç¡®å®šæ€§ï¼Œåº”åœ¨è°ƒç”¨æ­¤æ–¹æ³•å‰è¿›è¡Œåˆ¤æ–­åˆ†æã€‚
             return $"{fileDataPath}/Rainbow_{name}";
         }
 
         /// <summary>
-        /// ScriptObject RainbowHierarchyÊı¾İ»ñÈ¡
+        /// ScriptObject RainbowHierarchyæ•°æ®è·å–
         /// </summary>
-        /// <param name="fileName">ÎÄ¼şÃû</param>
-        /// <param name="filePath">ÎÄ¼şÂ·¾¶£¨Ä¬ÈÏÎªNULL£¬ÈôÆÚÍûÊ¹ÓÃÆäËûÂ·¾¶£¬´«ÈëĞÂÎÄ¼ş¼ĞÂ·¾¶µØÖ·¼´¿É£©</param>
+        /// <param name="fileName">æ–‡ä»¶å</param>
+        /// <param name="filePath">æ–‡ä»¶è·¯å¾„ï¼ˆé»˜è®¤ä¸ºNULLï¼Œè‹¥æœŸæœ›ä½¿ç”¨å…¶ä»–è·¯å¾„ï¼Œä¼ å…¥æ–°æ–‡ä»¶å¤¹è·¯å¾„åœ°å€å³å¯ï¼‰</param>
         /// <returns></returns>
         private static RainbowHierarchyConfig GetScriptableObject(string fileName, string filePath = null)
         {
-            // ×ÊÔ´ÎÄ¼şÂ·¾¶µØÖ·
+            // èµ„æºæ–‡ä»¶è·¯å¾„åœ°å€
             filePath ??= GetFilePath(fileName + ".asset");
 
-            // ¼ì²é×ÊÔ´ÎÄ¼ş¼ĞÄ¿Â¼ÊÇ·ñ´æÔÚ
+            // æ£€æŸ¥èµ„æºæ–‡ä»¶å¤¹ç›®å½•æ˜¯å¦å­˜åœ¨
             if (!AssetDatabase.IsValidFolder(fileDataPath))
             {
                 CreateFolder();
             }
 
-            // ¼ÓÔØÂ·¾¶ÎÄ¼ş
+            // åŠ è½½è·¯å¾„æ–‡ä»¶
             RainbowHierarchyConfig config = AssetDatabase.LoadAssetAtPath<RainbowHierarchyConfig>(filePath);
 
-            // ÓĞÔò·µ»Ø£¬ÎŞÔò´´½¨
+            // æœ‰åˆ™è¿”å›ï¼Œæ— åˆ™åˆ›å»º
             config = config != null ? config : CreateScriptableObejct(fileName, filePath);
 
             return config;
         }
 
         /// <summary>
-        /// ScriptableObject RainbowHeirarchyConfig ´´½¨
+        /// ScriptableObject RainbowHeirarchyConfig åˆ›å»º
         /// </summary>
-        /// <param name="fileName">ÎÄ¼şÃû</param>
-        /// <param name="filePath">ÎÄ¼şÂ·¾¶£¨Ä¬ÈÏÎªNULL£¬ÈôÆÚÍûÊ¹ÓÃÆäËûÂ·¾¶£¬´«ÈëĞÂÎÄ¼ş¼ĞÂ·¾¶µØÖ·¼´¿É£©</param>
+        /// <param name="fileName">æ–‡ä»¶å</param>
+        /// <param name="filePath">æ–‡ä»¶è·¯å¾„ï¼ˆé»˜è®¤ä¸ºNULLï¼Œè‹¥æœŸæœ›ä½¿ç”¨å…¶ä»–è·¯å¾„ï¼Œä¼ å…¥æ–°æ–‡ä»¶å¤¹è·¯å¾„åœ°å€å³å¯ï¼‰</param>
         /// <returns></returns>
         private static RainbowHierarchyConfig CreateScriptableObejct(string fileName, string filePath = null)
         {
-            // ×ÊÔ´Â·¾¶µØÖ·
+            // èµ„æºè·¯å¾„åœ°å€
             filePath ??= GetFilePath(fileName + ".asset");
 
             var config = AssetDatabase.LoadAssetAtPath<RainbowHierarchyConfig>(filePath);
@@ -284,7 +282,7 @@ namespace EditorExpand.HierarchyExpand
         }
 
         /// <summary>
-        /// »ñÈ¡±¾µØÎÄ¼şGUID
+        /// è·å–æœ¬åœ°æ–‡ä»¶GUID
         /// </summary>
         private static int GetLocalIdentifierInFile(GameObject target)
         {
