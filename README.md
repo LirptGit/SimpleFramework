@@ -18,5 +18,3 @@
 **注：UI组的名称按照场景分配：卸载场景时，提供了根据组名称卸载当前组里所有的UI面板资源**
 
 [文档](https://www.lirpt.com/index.php/2024/09/06/tool_003/)
-# 文档
-https://www.lirpt.com/index.php/2024/09/06/tool_003/
