@@ -2,7 +2,7 @@
 1. 缓存池           
 2. 对象池
 3. AB包加载器
-4. 声音（建议使用Assetbundle异步加载） 注：AudioMixerGroupName枚举，这里是根据声音混合器的名字来写的，混合器扩展的话，枚举可自行修改
+4. 声音（建议使用Assetbundle异步加载） 注：AudioMixerGroupName枚举，这里是根据声音混合器的名字来写的，可自行扩展
 5. UI（建议使用Assetbundle同步加载）注：UI组的名称按照场景分配：卸载场景时，提供了根据组名称卸载当前组里所有的UI面板资源
 6. 场景
 7. AI
