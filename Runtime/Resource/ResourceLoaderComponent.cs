@@ -13,7 +13,7 @@ namespace SimpleFramework
 
     public class ResourceLoaderComponent : SimpleFrameworkComponent
     {
-        public string Tip = "Ê¹ÓÃÇ°Çë°´ÕÕÇé¿öĞŞ¸ÄabPathµÄÂ·¾¶£¬ÒÔ¼°mainABNameµÄÃû×Ö";
+        public string Tip = "ä½¿ç”¨å‰è¯·æŒ‰ç…§æƒ…å†µä¿®æ”¹abPathçš„è·¯å¾„ï¼Œä»¥åŠmainABNameçš„åå­—";
         private AssetBundle dependenceBundle = null;
         private readonly Dictionary<string, AssetBundle> abDir = new Dictionary<string, AssetBundle>();
         private readonly Dictionary<string, List<string>> abAssetNameDir = new Dictionary<string, List<string>>();
@@ -41,11 +41,11 @@ namespace SimpleFramework
         }
 
         /// <summary>
-        /// Í¬²½¼ÓÔØab×ÊÔ´
+        /// åŒæ­¥åŠ è½½abèµ„æº
         /// </summary>
-        /// <param name="abName">ab°üµÄÃû×Ö</param>
-        /// <param name="assetName">Òª¼ÓÔØµÄ×ÊÔ´Ãû³Æ</param>
-        /// <param name="action">¼ÓÔØÍê³ÉµÄ»Øµ÷º¯Êı</param>
+        /// <param name="abName">abåŒ…çš„åå­—</param>
+        /// <param name="assetName">è¦åŠ è½½çš„èµ„æºåç§°</param>
+        /// <param name="action">åŠ è½½å®Œæˆçš„å›è°ƒå‡½æ•°</param>
         public UnityEngine.Object LoadAsset<T>(string abName, string assetName) where T : UnityEngine.Object
         {
             AssetBundle ab = LoadAB(abName);
@@ -55,11 +55,11 @@ namespace SimpleFramework
 
 
         /// <summary>
-        /// Òì²½¼ÓÔØab°üµÄ×ÊÔ´
+        /// å¼‚æ­¥åŠ è½½abåŒ…çš„èµ„æº
         /// </summary>
-        /// <param name="abName">ab°üµÄÃû×Ö</param>
-        /// <param name="assetName">Òª¼ÓÔØµÄ×ÊÔ´Ãû³Æ</param>
-        /// <param name="action">¼ÓÔØÍê³ÉµÄ»Øµ÷º¯Êı</param>
+        /// <param name="abName">abåŒ…çš„åå­—</param>
+        /// <param name="assetName">è¦åŠ è½½çš„èµ„æºåç§°</param>
+        /// <param name="action">åŠ è½½å®Œæˆçš„å›è°ƒå‡½æ•°</param>
         public void LoadAssetAnsy<T>(string abName, string assetName, Action<UnityEngine.Object> action = null) where T : UnityEngine.Object
         {
             IEnumerator Load(AssetBundle ab)
@@ -82,9 +82,9 @@ namespace SimpleFramework
         }
 
         /// <summary>
-        /// Ğ¶ÔØÖ¸¶¨ab°ü
+        /// å¸è½½æŒ‡å®šabåŒ…
         /// </summary>
-        /// <param name="abName">ÒªĞ¶ÔØab°üµÄÃû×Ö</param>
+        /// <param name="abName">è¦å¸è½½abåŒ…çš„åå­—</param>
         public void UnLoad(string abName)
         {
             if (!abDir.ContainsKey(abName))
@@ -98,11 +98,11 @@ namespace SimpleFramework
         }
 
         /// <summary>
-        /// ¼ÓÔØAB°ü
+        /// åŠ è½½ABåŒ…
         /// </summary>
         /// <param name="abName"></param>
         /// <returns></returns>
-        private AssetBundle LoadAB(string abName) 
+        public AssetBundle LoadAB(string abName) 
         {
             string[] dependences = GetAssetBundleDependences(abName);
 
@@ -126,7 +126,7 @@ namespace SimpleFramework
         }
 
         /// <summary>
-        /// »ñÈ¡AB°üÏà¹ØµÄÒÀÀµ°ü
+        /// è·å–ABåŒ…ç›¸å…³çš„ä¾èµ–åŒ…
         /// </summary>
         /// <param name="abName"></param>
         /// <returns></returns>
@@ -173,7 +173,7 @@ namespace SimpleFramework
             {
                 string assetName = abAssetNameDir[abName][i];
                 assetDir.Remove(assetName);
-                Debug.Log($"ÒÆ³ı{abName}ÖĞµÄ×ÊÔ´{assetName}");
+                Debug.Log($"ç§»é™¤{abName}ä¸­çš„èµ„æº{assetName}");
             }
 
             abAssetNameDir.Remove(abName);
