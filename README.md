@@ -1,12 +1,12 @@
 # 框架包含内容
-1. 【ReferencePool】缓存池           
-2. 【ObjectPool】对象池
-3. 【ResourceLoaderComponent】AB包加载器
-4. 【SoundComponent】声音（建议使用Assetbundle异步加载）
-6. 【UIComponent】UI（建议使用Assetbundle同步加载）
-7. 【SceneComponent】场景 注：场景若需要Assetbundle包加载的话，请先从加载器中加载对应的AB包，在调用
-8. 【BT】AI
-9. 【Event】事件
+01. 【ReferencePool】缓存池           
+02. 【ObjectPool】对象池
+03. 【ResourceLoaderComponent】AB包加载器
+04. 【SoundComponent】声音（建议使用Assetbundle异步加载）
+06. 【UIComponent】UI（建议使用Assetbundle同步加载）
+07. 【SceneComponent】场景 注：场景若需要Assetbundle包加载的话，请先从加载器中加载对应的AB包，在调用
+08. 【BT】AI
+09. 【Event】事件
 10. 【Epplus】Excel加载的dll文件
 11. 【Lijson】源码
 12. 【Player】简单的状态机示例
