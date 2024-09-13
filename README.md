@@ -10,7 +10,7 @@
 9. Excel加载的dll文件
 10. Lijson源码
 11. Player提供简单的状态机示例
-12. 相机旋转
+12. 相机原地旋转
 13. 2D 3D物体的拖拽 （3D物体拖拽 需在相机上添加PhysicsRaycaster脚本）
 14. 框架依赖于：assetbundle browser 插件（自动会安装）
 
