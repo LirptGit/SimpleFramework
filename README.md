@@ -4,7 +4,7 @@
 3. 【ResourceLoaderComponent】AB包加载器
 4. 【SoundComponent】声音（建议使用Assetbundle异步加载）
 6. 【UIComponent】UI（建议使用Assetbundle同步加载）
-7. 【SceneComponent】场景 注：场景若需要Assetbundle包加载的话，请先从加载器中加载对应的AB包，在调用
+7. 【SceneComponent】场景 
 8. 【BT】AI
 9. 【Event】事件
 10. 【Epplus】Excel加载的dll文件
@@ -14,6 +14,7 @@
 14. 【Draggable】2D 3D物体的拖拽 （3D物体拖拽 需在相机上添加PhysicsRaycaster脚本）
 15. 框架依赖于：assetbundle browser 插件（自动会安装）
 
+**注：场景若需要Assetbundle包加载的话，请先从加载器中加载对应的AB包，在调用**   
 **注：声音中的AudioMixerGroupName枚举，这里是根据声音混合器的名字来写的，可自行扩展**   
 **注：UI组的名称按照场景分配：卸载场景时，提供了根据组名称卸载当前组里所有的UI面板资源**
 
