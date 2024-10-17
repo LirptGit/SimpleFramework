@@ -14,8 +14,6 @@ namespace SimpleFrameworkDemo
 		{
 			InitBuiltinComponents();
 			InitCustomComponents();
-
-			Sound.PlaySound("卡农", AudioMixerGroupName.Music);
         }
     }
 }
