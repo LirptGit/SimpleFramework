@@ -1,0 +1,16 @@
+{
+    "name": "Unity.SimpleFramework",
+    "rootNamespace": "",
+    "references": [
+        "GUID:29a8a580b7f1bc64cbf21bba59efc85e"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": true,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

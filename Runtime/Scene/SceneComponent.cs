@@ -9,43 +9,48 @@ namespace SimpleFramework
         [Range(0, 1)]
         public float LoadSceneProgress;
 
-        AsyncOperation operation;
         protected override void Awake()
         {
             base.Awake();
         }
 
-        void Update()
-        {
-            if(operation != null)
-            {
-                LoadSceneProgress = operation.progress;
-            }
-            if (LoadSceneProgress >= 0.9f)
-            {
-                LoadSceneProgress = 1;
-                operation.allowSceneActivation = true;
-            }
-        }
-
         /// <summary>
-        /// Âä†ËΩΩÂú∫ÊôØ
+        /// º”‘ÿ≥°æ∞
         /// </summary>
         /// <param name="sceneName"></param>
         public void LoadScene(string sceneName, LoadSceneMode LoadSceneMode)
         {
+            IEnumerator Load()
+            {
+                AsyncOperation operation = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode);
+                operation.allowSceneActivation = false;
+
+                while (operation.progress < 0.9f)
+                {
+                    LoadSceneProgress = operation.progress;
+                }
+
+                while (LoadSceneProgress < 1)
+                {
+                    LoadSceneProgress += Time.deltaTime;
+                }
+                LoadSceneProgress = 1;
+
+                operation.allowSceneActivation = true;
+                yield return null;
+            }
+
             LoadSceneProgress = 0;
-            operation = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode);
-            operation.allowSceneActivation = false;
+            StartCoroutine(Load());
         }
 
         /// <summary>
-        /// ÂºÇÊ≠•Âç∏ËΩΩÂú∫ÊôØ
+        /// “Ï≤Ω–∂‘ÿ≥°æ∞
         /// </summary>
         /// <param name="sceneName"></param>
         public void UnloadScene(string sceneName)
         {
-            // ‰ΩøÁî®ÂºÇÊ≠•ÊñπÂºèÂç∏ËΩΩÂú∫ÊôØ  
+            //  π”√“Ï≤Ω∑Ω Ω–∂‘ÿ≥°æ∞  
             SceneManager.UnloadSceneAsync(sceneName);
         }
     }

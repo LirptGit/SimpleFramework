@@ -1,0 +1,16 @@
+{
+	"name" : "com.unity.simpleframework",
+	"description": "This is a Simple Framework.",
+	"version" : "0.0.4",
+	"displayName" : "SimpleFramework",
+	"samples": [
+		{
+			"displayName": "SimpleFrameworkDemo",
+			"description": "这是一个框架启动的基础脚本Demo",
+			"path": "Samples~/SimpleFrameworkDemo"
+		}
+	] ,
+	"dependencies": { 
+		"com.unity.assetbundlebrowser": "1.7.0"
+	}
+}
