@@ -11,7 +11,7 @@ namespace SimpleFramework
         [Header("Resource Loader")]
         [SerializeField] private ResourceLoaderComponent m_Loader = null;
 
-        [Header("AB°üĞÅÏ¢ÅäÖÃ")]
+        [Header("ABåŒ…ä¿¡æ¯é…ç½®")]
         [SerializeField] private LoaderType loaderType;
         [SerializeField] private string abLocalPath;
         [SerializeField] private string abName;
@@ -23,7 +23,7 @@ namespace SimpleFramework
         [SerializeField] private int capacity = 100;
         private IObjectPool<UIObject> uiPool;
 
-        [Header("×éµÄÃû×Ö°´ÕÕ³¡¾°µÄÃû×Ö·ÖÀà")]
+        [Header("ç»„çš„åå­—æŒ‰ç…§åœºæ™¯çš„åå­—åˆ†ç±»")]
         [SerializeField] private string[] uiGroups = null;
 
         private readonly List<string> m_isLoading = new List<string>();
@@ -32,7 +32,7 @@ namespace SimpleFramework
         private readonly Queue<UIObject> releaseUIQueue = new Queue<UIObject>();
 
         /// <summary>
-        /// ÓÎÏ·¿ò¼Ü×é¼ş³õÊ¼»¯
+        /// æ¸¸æˆæ¡†æ¶ç»„ä»¶åˆå§‹åŒ–
         /// </summary>
         protected override void Awake()
         {
@@ -66,9 +66,9 @@ namespace SimpleFramework
         }
 
         /// <summary>
-        /// Ìí¼Ó½çÃæ×é
+        /// æ·»åŠ ç•Œé¢ç»„
         /// </summary>
-        /// <param name="uiGroupName">½çÃæ×éÃû³Æ</param>
+        /// <param name="uiGroupName">ç•Œé¢ç»„åç§°</param>
         private void AddUIGroup(string uiGroupName)
         {
             GameObject uiGroupHelperObj = new GameObject("UI Group - " + uiGroupName);
@@ -82,30 +82,30 @@ namespace SimpleFramework
         }
 
         /// <summary>
-        /// ÊÇ·ñ´æÔÚ½çÃæ×é
+        /// æ˜¯å¦å­˜åœ¨ç•Œé¢ç»„
         /// </summary>
-        /// <param name="uiGroupName">½çÃæ×éÃû³Æ</param>
-        /// <returns>ÊÇ·ñ´æÔÚ½çÃæ×é</returns>
+        /// <param name="uiGroupName">ç•Œé¢ç»„åç§°</param>
+        /// <returns>æ˜¯å¦å­˜åœ¨ç•Œé¢ç»„</returns>
         public bool HasUIGroup(string uiGroupName)
         {
             return m_UIGroupDict.ContainsKey(uiGroupName);
         }
 
         /// <summary>
-        /// »ñÈ¡½çÃæ×é¡£
+        /// è·å–ç•Œé¢ç»„ã€‚
         /// </summary>
-        /// <param name="uiGroupName">½çÃæ×éÃû³Æ</param>
-        /// <returns>Òª»ñÈ¡µÄ½çÃæ×é</returns>
+        /// <param name="uiGroupName">ç•Œé¢ç»„åç§°</param>
+        /// <returns>è¦è·å–çš„ç•Œé¢ç»„</returns>
         public UIGroup GetUIGroup(string uiGroupName)
         {
             return m_UIGroupDict[uiGroupName];
         }
 
         /// <summary>
-        /// »ñÈ¡½çÃæ¡£
+        /// è·å–ç•Œé¢ã€‚
         /// </summary>
-        /// <param name="uiFormAssetName">½çÃæ×ÊÔ´Ãû³Æ</param>
-        /// <returns>Òª»ñÈ¡µÄ½çÃæ</returns>
+        /// <param name="uiFormAssetName">ç•Œé¢èµ„æºåç§°</param>
+        /// <returns>è¦è·å–çš„ç•Œé¢</returns>
         public UIForm GetUIForm(string uiFormAssetName)
         {
             foreach (KeyValuePair<string, UIGroup> uiGroup in m_UIGroupDict)
@@ -121,19 +121,19 @@ namespace SimpleFramework
         }
 
         /// <summary>
-        /// ´ò¿ª½çÃæ
+        /// æ‰“å¼€ç•Œé¢
         /// </summary>
-        /// <param name="abName">ab°üµÄÃû×Ö</param>
-        /// <param name="uiFormAssetName">½çÃæ×ÊÔ´Ãû³Æ</param>
-        /// <param name="uiGroupName">½çÃæ×éÃû³Æ</param>
-        /// <param name="userData">²ÎÊı</param>
+        /// <param name="abName">abåŒ…çš„åå­—</param>
+        /// <param name="uiFormAssetName">ç•Œé¢èµ„æºåç§°</param>
+        /// <param name="uiGroupName">ç•Œé¢ç»„åç§°</param>
+        /// <param name="userData">å‚æ•°</param>
         public void OpenUIForm(string uiFormAssetName, string uiGroupName, object userData)
         {
             UIGroup uiGroup = (UIGroup)GetUIGroup(uiGroupName);
 
             if (uiGroup == null)
             {
-                Debug.LogError($"Çë¼ì²éUICompontent½Å±¾ÉÏÊÇ·ñÌí¼Ó×éÃû");
+                Debug.LogError($"è¯·æ£€æŸ¥UICompontentè„šæœ¬ä¸Šæ˜¯å¦æ·»åŠ ç»„å");
             }
 
             if (uiGroup.HasUIForm(uiFormAssetName))
@@ -146,12 +146,12 @@ namespace SimpleFramework
                 {
                     m_isLoading.Add(uiFormAssetName);
 
-                    LoaderABTask abTask = LoaderABTask.Create(loaderType, CommonPath.GetABPath(abLocalPath), abName, typeof(AudioClip), uiFormAssetName + assetSuffix, mainabName);
+                    LoaderABTask abTask = LoaderABTask.Create(loaderType, CommonPath.GetABPath(abLocalPath), abName, typeof(GameObject), uiFormAssetName + assetSuffix, mainabName);
                     m_Loader.AddAsset(abTask, (UnityEngine.Object obj) =>
                     {
                         if (obj == null)
                         {
-                            Debug.LogError($"ab°ü¼ÓÔØµÄui½çÃæÎª¿Õ£¬Çë¼ì²éUICompontent½Å±¾ÉÏµÄAB°üĞÅÏ¢ÅäÖÃÊÇ·ñÕıÈ·");
+                            Debug.LogError($"abåŒ…åŠ è½½çš„uiç•Œé¢ä¸ºç©ºï¼Œè¯·æ£€æŸ¥UICompontentè„šæœ¬ä¸Šçš„ABåŒ…ä¿¡æ¯é…ç½®æ˜¯å¦æ­£ç¡®");
                         }
 
                         LoadFinishedCallBack(obj, uiGroup, uiFormAssetName, userData);
@@ -161,11 +161,11 @@ namespace SimpleFramework
         }
 
         /// <summary>
-        /// ´ò¿ª½çÃæ
+        /// æ‰“å¼€ç•Œé¢
         /// </summary>
-        /// <param name="uiPanel">½çÃæÔ¤ÖÆÌå</param>
-        /// <param name="uiGroupName">½çÃæ×éÃû³Æ</param>
-        /// <param name="userData">²ÎÊı</param>
+        /// <param name="uiPanel">ç•Œé¢é¢„åˆ¶ä½“</param>
+        /// <param name="uiGroupName">ç•Œé¢ç»„åç§°</param>
+        /// <param name="userData">å‚æ•°</param>
         public void OpenUIForm<T>(GameObject uiPanel, string uiGroupName, object userData) where T : UIFormLogic
         {
             UIGroup uiGroup = (UIGroup)GetUIGroup(uiGroupName);
@@ -181,9 +181,9 @@ namespace SimpleFramework
         }
 
         /// <summary>
-        /// ¹Ø±Õ½çÃæ
+        /// å…³é—­ç•Œé¢
         /// </summary>
-        /// <param name="uiFormAssetName">½çÃæ</param>
+        /// <param name="uiFormAssetName">ç•Œé¢</param>
         public void CloseUIForm(UIForm uiForm, object userData)
         {
             UIGroup uiGroup = uiForm.UIGroup;
@@ -195,9 +195,9 @@ namespace SimpleFramework
         }
 
         /// <summary>
-        /// ÊÍ·Å½çÃæ×ÊÔ´
+        /// é‡Šæ”¾ç•Œé¢èµ„æº
         /// </summary>
-        /// <param name="uiForm">½çÃæ</param>
+        /// <param name="uiForm">ç•Œé¢</param>
         public void ReleaseUIForm(UIForm uiForm)
         {
             UIGroup uiGroup = uiForm.UIGroup;
@@ -216,7 +216,7 @@ namespace SimpleFramework
         }
 
         /// <summary>
-        /// ÊÍ·Åµ±Ç°×éÄÚËùÓĞµÄ½çÃæ×ÊÔ´
+        /// é‡Šæ”¾å½“å‰ç»„å†…æ‰€æœ‰çš„ç•Œé¢èµ„æº
         /// </summary>
         /// <param name="uiGroupName"></param>
         public void ReleaseUIForm(string uiGroupName) 
@@ -243,7 +243,7 @@ namespace SimpleFramework
         }
 
         /// <summary>
-        /// ´´½¨ºÍ»ñÈ¡SoundObject
+        /// åˆ›å»ºå’Œè·å–SoundObject
         /// </summary>
         /// <returns></returns>
         private UIObject CreateUIObject(UIForm uiForm)
